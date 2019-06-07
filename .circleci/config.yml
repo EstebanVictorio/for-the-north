@@ -22,12 +22,11 @@ jobs:
       - attach_workspace:
           at: workspace_one
       - run: |
-          if [ [$(cat workspace_one/test-output) == "Trying out workspaces" ] ]; then
+          if [[ $(cat workspace_one/test-output) == "Trying out workspaces" ]]; then
             echo  "It worked!";
           else
             echo "Nope!"; exit 1
           fi
-
 workflows:
   version: 2
   one_and_two:
