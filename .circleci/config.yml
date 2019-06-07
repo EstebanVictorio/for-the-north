@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run: echo "A first chido"
       - attach_workspace:
-        at: workspace_one
+          at: workspace_one
       - run: |
           if [ [$(cat workspace_one/test-output) == "Trying out workspaces" ] ]; then
             echo  "It worked!";
