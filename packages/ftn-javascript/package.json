@@ -8,7 +8,7 @@
     "styled-components": "4.3.1"
   },
   "scripts": {
-    "dev": "next"
+    "dev": "yarn next -p 3001"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "3.2.0",

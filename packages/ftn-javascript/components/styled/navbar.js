@@ -20,6 +20,7 @@ const StyledLogo = styled.a`
 
 const Navbar = () => (
   <StyledNavbar>
+asdasdasdasjndlansdlkan
     <Link href="/">
       <StyledLogo>
         <strong>FTN</strong>
