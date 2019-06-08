@@ -1,8 +1,7 @@
-FROM node:10.16.0
+FROM node:12.4.0
+WORKDIR /ftn-javascript
 RUN /bin/bash -c "apt-get update && apt-get install  -y yarn"
-WORKDIR /packages/ftn-javascript
-RUN /bin/bash -c "yarn install"
-COPY ./packages/ftn-javascript /packages/ftn-javascript
-RUN /bin/bash -c "cd /packages/ftn-javascript && ls"
-RUN /bin/bash -c "yarn install"
+RUN /bin/bash -c "cd /ftn-javascript && yarn install"
+COPY ./packages/ftn-javascript /ftn-javascript
+RUN /bin/bash -c "cd /ftn-javascript && ls && cat package.json"
 CMD ["yarn", "dev"]
