@@ -1,5 +1,7 @@
 FROM node:12.4.0
-WORKDIR /ftn-javascript
-COPY ./packages/ftn-javascript /ftn-javascript
+LABEL maintainer="estebanvictorio@gmail.com"
+RUN apt-get update && apt-get install -y yarn
+WORKDIR /app
+COPY . /app
 RUN yarn install
-CMD ["yarn", "dev"]
+CMD ["yarn","dev"]

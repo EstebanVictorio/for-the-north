@@ -4,9 +4,7 @@ services:
     env_file:
       - .env
     build:
-      context: ${ROOT_DIR}
-      dockerfile: ./docker/ftn-javascript/Dockerfile
+      context: ${ROOT_DIR}/packages/ftn-javascript
+      dockerfile: ${ROOT_DIR}/docker/ftn-javascript/Dockerfile
     ports:
       - "3001:3001"
-    volumes:
-      - .:/app
