@@ -9,18 +9,19 @@ const StyledNavbar = styled.nav`
   font-size: 32px;
   display: flex;
   align-items: center;
+  box-shadow: 10px 0 10px -2px;
 `
 
 const StyledLogo = styled.a`
-    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
     padding: 0 0.5em;
     text-decoration: none;
-    color: black;
+    box-sizing: border-box;
 `
 
 const Navbar = () => (
   <StyledNavbar>
-    asdasdasdas;dl;clm;dmas;d
     <Link href="/">
       <StyledLogo>
         <strong>FTN</strong>

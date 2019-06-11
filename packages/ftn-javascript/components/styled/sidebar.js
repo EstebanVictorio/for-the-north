@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 const StyledSidebar = styled.aside`
-  grid-area: sidebar;
   display: flex;
+  grid-area: sidebar;
   flex-direction: column;
+  box-shadow: 0 4px 10px -2px;
   background-color: rgb(175, 153, 6);
 
   @media screen and (min-width:1024px) {
@@ -15,12 +16,14 @@ const StyledSidebar = styled.aside`
 `
 
 const StyledNavLink = styled.a`
+  width: 100%;
   font-size: 20px;
-  box-sizing: border-box;
-  padding: 0.5em 2em;
+  cursor: pointer;
   color: whitesmoke;
+  text-align: center;
+  padding: 0.5em 2em;
   text-decoration: none;
-
+  box-sizing: border-box;
   &:hover {
     color: #323330;
     background-color: #f6e995;
