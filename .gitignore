@@ -6,3 +6,4 @@ yarn-error.logs
 .idea
 dist
 .next
+.env

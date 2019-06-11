@@ -8,9 +8,12 @@
     "styled-components": "4.3.1"
   },
   "scripts": {
-    "dev": "next"
+    "dev": "yarn next -p 3001"
   },
   "devDependencies": {
+    "webpack": "4.33.0",
+    "webpack-cli": "3.3.3",
+    "webpack-dev-server":"3.7.1",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-styled-components": "1.10.0"
   }

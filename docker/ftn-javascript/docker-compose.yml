@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  blog:
+    volumes:
+      - ./../../packages/ftn-javascript:/app
+    env_file:
+      - .env
+    build:
+      context: ${ROOT_DIR}/packages/ftn-javascript
+      dockerfile: ${ROOT_DIR}/docker/ftn-javascript/Dockerfile
+    ports:
+      - "3001:3001"
