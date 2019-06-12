@@ -22,12 +22,11 @@ const serverHandler = (req,res) => {
 
 const schemaResolver = (err, data) => {
   if(!err) {
-    console.log(`Data: ${data.toString()}`)
     const schema = buildSchema(data.toString())
-    server.use('/graphql', graphqlHTTP({
+    server.use('/api', graphqlHTTP({
       schema,
       rootValue,
-      graphiql: 
+      graphiql: true
     }))
   }
 }
