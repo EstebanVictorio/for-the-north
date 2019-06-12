@@ -1,0 +1,10 @@
+type Query {
+  post: Post,
+  posts: [Post!]
+}
+
+type Post {
+  id: Int
+  author: String
+  text: String
+}
