@@ -1,5 +1,6 @@
 import Navbar from './navbar'
 import Sidebar from './sidebar'
+import { useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
 const BaseStyles = createGlobalStyle`
@@ -46,16 +47,19 @@ const StyledMainContent = styled.section`
   grid-area: main-content;
   font-family: lato;
   font-size: 20px;
-
 `
 
 const Layout = ({ children }) => {
+
+  const [open, setOpen] = useState(true)
+
+  const handleToggleMenuClick = () => setOpen(!open)
   return (
     <>
       <BaseStyles />
       <StyledLayout>
-        <Navbar />
-        <Sidebar />
+        <Navbar handleToggleMenuClick={handleToggleMenuClick} />
+        <Sidebar open={open} handleToggleMenuClick={handleToggleMenuClick} />
         <StyledMainContent>
         { children }
         </StyledMainContent>

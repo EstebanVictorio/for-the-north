@@ -8,26 +8,34 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
   box-shadow: 0 4px 10px -2px;
   background-color: rgb(175, 153, 6);
-
-  @media screen and (min-width: 144px) {
+  height: calc(100vh - 60px);
+  @media screen and (min-width: 144px) and (max-width: 1023px){
     .sidebar-toggle-button {
       display: none;
     }
+
+    &.open {
+      height: initial;
+    }
+
+
+    &.closed {
+      height: 0;
+    }
   }
 
-  @media screen and (min-width:1024px) {
+  @media screen and (min-width: 1024px) {
+    .sidebar-toggle-button {
+      display: initial;
+    }
+
     &.open {
-      width: 150px;
+      width: initial;
+      
     }
 
     &.closed {
       width: 80px;
-    }
-    display: inline-flex;
-    height: calc(100vh - 60px);
-    align-items: flex-start; 
-    .sidebar-toggle-button {
-      display: initial;
     }
   }
 
@@ -65,14 +73,13 @@ const StyledSidebar = styled.aside`
 `
 
 const StyledNavLink = styled.a`
-  width: 100%;
-  display: flex;
   font-size: 20px;
   cursor: pointer;
   color: whitesmoke;
   padding: 0.5em 2em;
   align-items: center;
   justify-content: center;
+  text-align: center;
   text-decoration: none;
   box-sizing: border-box;
   &:hover {
@@ -89,35 +96,49 @@ const StyledNavLink = styled.a`
     filter: invert(1);
   }
 
-  &.open {
-    .link-text {
-      display: inline;
+  @media screen and (min-width: 144px){
+    &.open{
+      display: flex;
+    }
+
+
+    &.closed{
+      display: none;
     }
   }
 
-  &.closed {
-    .link-text {
-      display: none;
+
+  @media screen and (min-width: 1024px){
+    &.open{
+      display: flex;
+      .link-text {
+        display: initial;
+      }
+    }
+
+
+    &.closed{
+      display: flex;
+      .link-text {
+        display: none;
+      }
     }
   }
 `
 
-const Sidebar = () => {
-  const [open, setOpen] = useState(true)
+const Sidebar = ({open, handleToggleMenuClick}) => {
   const [openClass, setOpenClass] = useState('open')
 
   useEffect(() => setOpenClass(open ? 'open' : 'closed'),[open])
-
-  const handleToggleSidebarClick = () => setOpen(!open)
 
   return (
     <StyledSidebar className={openClass}>
       <input
         type="button"
         className={`sidebar-toggle-button ${openClass}`}
-        onClick={handleToggleSidebarClick}
+        onClick={handleToggleMenuClick}
       />
-      <Link href="/posts">
+      <Link prefetch href="/posts">
         <StyledNavLink className={openClass}>
           <img className="link-icon" src="/static/icons/post.svg" alt="posts"/>
           <span className="link-text">
@@ -125,7 +146,7 @@ const Sidebar = () => {
           </span>
         </StyledNavLink>
       </Link>
-      <Link href="/about">
+      <Link prefetch href="/about">
         <StyledNavLink className={openClass}>
           <img className="link-icon" src="/static/icons/about.svg" alt="about"/>
           <span className="link-text">
