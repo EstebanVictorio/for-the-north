@@ -1,4 +1,4 @@
-const post = (id) => {
+const post = ({id}) => {
   console.log('ID:',id)
   return ({
     id,
@@ -7,8 +7,7 @@ const post = (id) => {
   })
 }
 
-const posts = ({ id }) => {
-  console.log(id)
+const posts = () => {
   return [
     {
       id: 2,
@@ -22,7 +21,7 @@ const posts = ({ id }) => {
       text:'Post 3',
       url: '/post/3'
     },
-  ].filter(post => post.id === id)
+  ]
 }
 
 module.exports = {

@@ -9,12 +9,14 @@
     "next": "8.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "showdown": "1.9.0",
     "styled-components": "4.3.1"
   },
   "scripts": {
     "dev": "node server.js"
   },
   "devDependencies": {
+    "@playlyfe/gql": "2.6.1",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-styled-components": "1.10.0",
     "dotenv": "8.0.0",
