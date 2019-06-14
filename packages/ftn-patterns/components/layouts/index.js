@@ -55,6 +55,7 @@ const StyledMainContent = styled.section`
   grid-area: main-content;
   font-family: lato;
   font-size: 20px;
+  color: var(--accent);
 `
 
 const Layout = ({ theme, children }) => {
@@ -65,15 +66,18 @@ const Layout = ({ theme, children }) => {
     <>
     <ThemeConsumer>
       {
-        themeProps => {
-          console.log('themeProps:')
-          console.log(themeProps)
-          return <BaseStyles {...themeProps}/>
-        }
+        themeProps => <BaseStyles {...themeProps}/>
       }
     </ThemeConsumer>
     <StyledLayout>
-      <Navbar handleToggleMenuClick={handleToggleMenuClick} />
+      <ThemeConsumer>
+        { ({navbarBorder}) => (
+            <Navbar
+              border={navbarBorder}
+              handleToggleMenuClick={handleToggleMenuClick}
+            />
+        ) }
+      </ThemeConsumer>
       <Sidebar open={open} handleToggleMenuClick={handleToggleMenuClick} />
       <StyledMainContent>
         { children }

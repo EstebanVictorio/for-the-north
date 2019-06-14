@@ -19,7 +19,7 @@ class Blog extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Theme selected="slim">
+      <Theme selected="belladona">
         <Component  {...pageProps} />
       </Theme>
     )

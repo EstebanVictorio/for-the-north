@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled,{ ThemeConsumer } from 'styled-components'
 
 const StyledNavbar = styled.nav`
-  grid-area: navbar;
   height: 60px;
-  background-color: var(--primary);
-  color: var(--accent);
-  font-size: 32px;
   display: flex;
+  font-size: 32px;
+  grid-area: navbar;
   align-items: center;
+  color: var(--accent);
+  box-sizing: border-box;
+  background-color: var(--primary);
   box-shadow: 10px 0 10px -2px black;
+
+
+  &.border {
+    border-bottom: 4px solid var(--focused);
+  }
 `
 
 const StyledLogo = styled.a`
@@ -36,8 +42,6 @@ const StyledMenuToggleButton = styled.input`
   background-size: 40px 40px;
   background-image: url('/static/icons/menu.svg');
 
-
-
   @media screen and (min-width: 144px) {
     display: initial;
   }
@@ -45,19 +49,34 @@ const StyledMenuToggleButton = styled.input`
   @media screen and (min-width: 1024px) {
     display: none;
   }
+  
+  &.icon-light {
+    filter: invert(1);
+  }
+}
 `
 
-const Navbar = ({handleToggleMenuClick}) => {
+const Navbar = ({handleToggleMenuClick, border}) => {
 
   return (
-    <StyledNavbar>
-      <StyledMenuToggleButton type="button" onClick={handleToggleMenuClick}/>
-      <Link prefetch href="/">
-        <StyledLogo>
-          <strong>FTN</strong>
-        </StyledLogo>
-      </Link>
-    </StyledNavbar>
+    <ThemeConsumer>
+      {
+        ({ iconTheme }) => (
+          <StyledNavbar className={`${border ? 'border':''}`}>
+            <StyledMenuToggleButton
+              type="button"
+              className={iconTheme}
+              onClick={handleToggleMenuClick}
+            />
+            <Link prefetch href="/">
+              <StyledLogo>
+                <strong>FTN</strong>
+              </StyledLogo>
+            </Link>
+          </StyledNavbar>
+        )
+      }
+    </ThemeConsumer>
   )
 }
 

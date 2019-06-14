@@ -5,7 +5,9 @@ export default {
     },
     content: {
       accent: "whitesmoke",
-      focused: "cyan",
+      focused: "#3d003d",
       landscape: "#282c44",
-    }
+    },
+    iconTheme: 'icon-light',
+    navbarBorder: false
 }

@@ -7,5 +7,7 @@ export default {
       accent: "#323330",
       focused: "#F6E995",
       landscape: "#FDFBED",
-    }
+    },
+    navbarBorder: false,
+    iconTheme: 'icon-dark'
 }

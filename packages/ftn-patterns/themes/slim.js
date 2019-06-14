@@ -7,5 +7,7 @@ export default {
       accent: "darkslategray",
       focused: "lightgray",
       landscape: "whitesmoke",
-    }
+    },
+    iconTheme: 'icon-dark',
+    navbarBorder: false
 }
