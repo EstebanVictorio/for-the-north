@@ -1,0 +1,20 @@
+type Query {
+  post: Post,
+  posts(id:Int!): [Post!]
+}
+
+type Mutation {
+  createPost(markdown: String): CreatePostResult!
+}
+
+type CreatePostResult {
+  id: Int!
+  status: Int!,
+}
+
+type Post {
+  id: Int
+  author: String
+  text: String
+  url: String
+}
