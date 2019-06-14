@@ -1,5 +1,5 @@
 {
-  "name": "ftn-patterns",
+  "name": "@ftn/ftn-patterns",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
