@@ -7,7 +7,7 @@ const StyledSidebar = styled.aside`
   grid-area: sidebar;
   flex-direction: column;
   box-shadow: 0 4px 10px -2px;
-  background-color: #AF9906;
+  background-color: var(--secondary);
   height: calc(100vh - 60px);
   @media screen and (min-width: 144px) and (max-width: 1023px){
     .sidebar-toggle-button {
@@ -64,8 +64,8 @@ const StyledSidebar = styled.aside`
     background-repeat: no-repeat;
     background-color: transparent;
     &:hover {
-      color: #323330;
-      background-color: #f6e995;
+      color: var(--accent);
+      background-color: var(--focused);
       text-decoration: underline;
       filter: none;
     }
@@ -83,8 +83,8 @@ const StyledNavLink = styled.a`
   text-decoration: none;
   box-sizing: border-box;
   &:hover {
-    color: #323330;
-    background-color: #f6e995;
+    color: var(--accent);
+    background-color: var(--focused);
     text-decoration: underline;
     .link-icon {
       filter: none;

@@ -5,16 +5,16 @@ import styled from 'styled-components'
 const StyledNavbar = styled.nav`
   grid-area: navbar;
   height: 60px;
-  background-color: #F0DB4F;
-  color: #323330;
+  background-color: var(--primary);
+  color: var(--accent);
   font-size: 32px;
   display: flex;
   align-items: center;
-  box-shadow: 10px 0 10px -2px;
+  box-shadow: 10px 0 10px -2px black;
 `
 
 const StyledLogo = styled.a`
-    color: black;
+    color: var(--accent);
     cursor: pointer;
     padding: 0 0.5em;
     text-decoration: none;

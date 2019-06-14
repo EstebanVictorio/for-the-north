@@ -1,15 +1,14 @@
 import React from 'react';
+import Theme from 'themes'
 import App from 'next/app';
 
-class MyApp extends App {
+class Blog extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
-
-    pageProps.theme = "sunny-desert"
     
     return {
       pageProps
@@ -19,8 +18,12 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    return <Component  {...pageProps} />;
+    return (
+      <Theme selected="belladona">
+        <Component  {...pageProps} />
+      </Theme>
+    )
   }
 }
 
-export default MyApp;
+export default Blog;

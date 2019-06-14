@@ -1,10 +1,16 @@
-import Theme from 'themes'
 import { useState } from 'react'
 import Navbar from 'navigation/navbar'
 import Sidebar from 'navigation/sidebar'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, ThemeConsumer } from 'styled-components'
 
 const BaseStyles = createGlobalStyle`
+:root {
+  --focused : ${({ content }) => content.focused};
+  --accent : ${({ content }) => content.accent};
+  --primary : ${({ meta }) => meta.primary};
+  --secondary : ${({ meta }) => meta.secondary};
+  --landscape : ${({ content }) => content. landscape};
+}
 
 @font-face{
   font-family: bFont;
@@ -52,22 +58,27 @@ const StyledMainContent = styled.section`
 `
 
 const Layout = ({ theme, children }) => {
-
   const [open, setOpen] = useState(true)
   
-  console.log(Theme)
   const handleToggleMenuClick = () => setOpen(!open)
   return (
     <>
-    <Theme selected={theme} />
-      <BaseStyles />
-      <StyledLayout>
-        <Navbar handleToggleMenuClick={handleToggleMenuClick} />
-        <Sidebar open={open} handleToggleMenuClick={handleToggleMenuClick} />
-        <StyledMainContent>
-          { children }
-        </StyledMainContent>
-      </StyledLayout>
+    <ThemeConsumer>
+      {
+        themeProps => {
+          console.log('themeProps:')
+          console.log(themeProps)
+          return <BaseStyles {...themeProps}/>
+        }
+      }
+    </ThemeConsumer>
+    <StyledLayout>
+      <Navbar handleToggleMenuClick={handleToggleMenuClick} />
+      <Sidebar open={open} handleToggleMenuClick={handleToggleMenuClick} />
+      <StyledMainContent>
+        { children }
+      </StyledMainContent>
+    </StyledLayout>
     </>
   )
 }

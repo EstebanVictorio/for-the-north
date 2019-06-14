@@ -1,48 +1,31 @@
-import dynamic from 'next/dynamic'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import SunnyDesert from './sunny-desert'
+import Belladona from './belladona'
+import SnowyPlain from './snowy-plain'
+import Slim from './slim'
+import {
+  SLIM,
+  BELLADONA,
+  SNOWY_PLAIN,
+  SUNNY_DESERT,
+ } from 'utils/constants'
 
 
-const StyledTheme = createGlobalStyle`
-:root {
-  --focus : ${({ focus }) => {
-    console.log('Focus prop:', focus)
-    return focus
-  }};
-  --accent : ${({ accent }) => accent};
-  --primary : ${({ primary }) => primary};
-  --secondary : ${({ secondary }) => secondary};
-  --landscape : ${({ landscape }) => landscape};
+
+const themes = {
+  "slim": Slim,
+  "belladona": Belladona,
+  "snowy-plain": SnowyPlain,
+  "sunny-desert": SunnyDesert,
 }
-`
 
-const getContext = context => {
-  const { Consumer } = context
+const Theme = ({ selected, children }) => {
+  const selectedTheme = themes[selected] ? themes[selected] : themes.slim
   return (
-    <Consumer>
-      { (themeProps) => {
-        console.log('Theme props:')
-        console.log(themeProps)
-        return <StyledTheme {...themeProps}/>
-      } }
-    </Consumer>
+    <ThemeProvider theme={selectedTheme}>
+      { children }
+    </ThemeProvider>
   )
-}
-
-
-const Theme = ({selected}) => {
-  let Component = null
-  switch(selected) {
-    case 'belladona':
-      Component = dynamic(() => import('./belladona').then(getContext))
-    case 'snowy-plain':
-      Component = dynamic(() => import('./snowy-plain').then(getContext))
-    case 'sunny-desert':
-      Component = dynamic(() => import('./sunny-desert').then(getContext))
-    case 'slim':
-    default:
-      Component = dynamic(() => import('./slim').then(getContext))
-  }
-  return Component
 }
 
 export default Theme

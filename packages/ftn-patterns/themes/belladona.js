@@ -1,26 +1,11 @@
-import { createContext } from 'react'
-
-const { Provider, Consumer } = createContext({
-  navigation: {
+export default {
     meta: {
-      primary: "#F0DB4F",
-      secondary: "#AF9906",
+      primary: "darkblue",
+      secondary: "purple",
     },
     content: {
-      accent: "black",
-      focused: "#F6E995",
-      landscape: "#FDFBED",
+      accent: "whitesmoke",
+      focused: "cyan",
+      landscape: "#282c44",
     }
-  }
-})
-
-
-export {
-  Provider,
-  Consumer,
-}
-
-export default {
-  Provider,
-  Consumer,
 }

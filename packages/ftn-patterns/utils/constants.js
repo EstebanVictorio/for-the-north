@@ -1,0 +1,12 @@
+const SUNNY_DESERT = 'SUNNY_DESERT'
+const SNOWY_PLAIN = 'SNOWY_PLAIN'
+const BELLADONA = 'BELLADONA'
+const SLIM = 'SLIM'
+
+
+export {
+  SLIM,
+  BELLADONA,
+  SNOWY_PLAIN,
+  SUNNY_DESERT,
+}
