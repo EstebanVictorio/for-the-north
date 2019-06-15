@@ -137,7 +137,7 @@ const Sidebar = ({open, handleToggleMenuClick}) => {
           className={`sidebar-toggle-button ${openClass} ${iconTheme}`}
           onClick={handleToggleMenuClick}
         />
-        <Link prefetch href="/posts">
+        <Link prefetch href="/posts-index">
           <StyledNavLink className={openClass}>
             <Icon icon="blog-post" />
             <span className="link-text">

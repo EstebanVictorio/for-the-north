@@ -1,4 +1,4 @@
-import {Layout} from '@ftn/patterns/dist'
+import { Layout } from '@ftn/patterns'
 
 const Home = ({ theme }) => (
   <Layout theme={theme}>

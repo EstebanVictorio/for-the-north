@@ -9,5 +9,8 @@
     "bootstrap": "yarn lerna bootstrap",
     "lerna-init": "yarn lerna init --independent",
     "lerna-add": "yarn lerna add"
+  },
+  "devDependencies": {
+    "lerna": "3.15.0"
   }
 }
