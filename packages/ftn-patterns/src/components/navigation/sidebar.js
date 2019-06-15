@@ -4,13 +4,14 @@ import Link from 'next/link'
 import Icon from 'components/styled/icon'
 const StyledSidebar = styled.aside`
   display: flex;
+  top: 60px;
+  position: sticky;
   grid-area: sidebar;
   flex-direction: column;
   box-shadow: 0 10px 8px -2px;
   background-color: var(--secondary);
   height: calc(100vh - 60px);
-
-  @media screen and (min-width: 144px) and (max-width: 1023px){
+  @media screen and (min-width: 144px) and (max-width: 1024px) {
     .sidebar-toggle-button {
       display: none;
     }

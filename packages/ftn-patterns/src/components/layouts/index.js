@@ -56,6 +56,8 @@ const StyledMainContent = styled.section`
   font-family: lato;
   font-size: 20px;
   color: var(--accent);
+  height: calc(100vh - 60px);
+  overflow: scroll;
 `
 
 const Layout = ({ theme, children }) => {

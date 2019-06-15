@@ -5,7 +5,15 @@ import styled from 'styled-components'
 
 const StyledColumns = styled.div`
   display: flex;
-  flex-direction: row;
+  
+
+  @media screen and (min-width: 144px){
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 1024px){
+    flex-direction: row;
+  }
 
 
   .post-index-list {
@@ -24,6 +32,11 @@ const PostsIndex = ({ theme }) => (
       <div className="post-index-list">
         <h2>Eager to learn?</h2>
         <ol>
+        <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Welcome to React!</a>
+            </Link>
+          </li>
           <li className="post-entry">
             <Link href="/posts/1">
               <a>Components: How to write them</a>
@@ -36,7 +49,22 @@ const PostsIndex = ({ theme }) => (
           </li>
           <li className="post-entry">
             <Link href="/posts/1">
+              <a>Components: <code>props</code> and how to take advantage of them</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
               <a>Components: The <code>class</code> component</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Components: Enter <code>state</code></a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Components: Lifecycle</a>
             </Link>
           </li>
         </ol>
@@ -47,6 +75,26 @@ const PostsIndex = ({ theme }) => (
           <li className="post-entry">
             <Link href="/posts/1">
               <a>Set up a React Environment</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Hot Reload: the hard way</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Hot Reload: the much easier way</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a>Styled Components</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link href="/posts/1">
+              <a><code>styled-components</code> (nope, not a duplicate)</a>
             </Link>
           </li>
         </ol>

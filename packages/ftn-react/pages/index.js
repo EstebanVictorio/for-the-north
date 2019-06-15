@@ -1,8 +1,18 @@
 import { Layout } from '@ftn/patterns'
+import styled from 'styled-components'
+
+const StyledHeading = styled.h1`
+  font-size: 40px;
+`
 
 const Home = ({ theme }) => (
   <Layout theme={theme}>
-    <div>Pattern Home page</div>
+    <StyledHeading>
+      Welcome to FTN - React Edition!
+    </StyledHeading>
+    <h3>
+    A place to check the bare bones on how to "React"
+    </h3>
   </Layout>
 )
 

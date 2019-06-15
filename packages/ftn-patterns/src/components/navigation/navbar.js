@@ -3,9 +3,11 @@ import Link from 'next/link'
 import styled,{ ThemeConsumer } from 'styled-components'
 
 const StyledNavbar = styled.nav`
+  top: 0;
   height: 60px;
   display: flex;
   font-size: 32px;
+  position: sticky;
   grid-area: navbar;
   align-items: center;
   color: var(--accent);
@@ -13,6 +15,9 @@ const StyledNavbar = styled.nav`
   background-color: var(--primary);
   box-shadow: 10px 0 10px -2px black;
 
+  @media screen and (min-width: 144px) and (max-width: 1024px){
+    
+  }
 
   &.border {
     border-bottom: 4px solid var(--focused);
