@@ -1,9 +1,9 @@
 {
-  "name": "for-the-north",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "name": "for-the-north",
   "scripts": {
     "lerna-help": "yarn lerna --help",
     "lerna-add": "yarn lerna add",
@@ -12,6 +12,6 @@
     "lerna-init": "yarn lerna init --independent"
   },
   "devDependencies": {
-    "lerna": "3.15.0"
+    "lerna": "^3.15.0"
   }
 }

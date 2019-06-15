@@ -1,9 +1,10 @@
-node_modules
-.vscode
-package-lock.json
-yarn.lock
-yarn-error.log
-.idea
+.env
 dist
 .next
-.env
+.idea
+.vscode
+yarn.lock
+node_modules
+yarn-error.log
+lerna-debug.log
+package-lock.json

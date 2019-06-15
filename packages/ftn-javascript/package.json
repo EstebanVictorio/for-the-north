@@ -1,6 +1,6 @@
 {
-  "name": "ftn-javascript",
-  "version": "0.0.0",
+  "name": "@ftn/javascript",
+  "version": "1.0.0",
   "dependencies": {
     "express": "4.17.1",
     "express-graphql": "0.8.0",

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import SunnyDesert from './sunny-desert'
 import Belladona from './belladona'

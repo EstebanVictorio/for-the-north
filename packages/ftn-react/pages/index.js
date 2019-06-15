@@ -1,5 +1,4 @@
-import React from 'react'
-import Layout from 'layouts'
+import {Layout} from '@ftn/patterns/dist'
 
 const Home = ({ theme }) => (
   <Layout theme={theme}>

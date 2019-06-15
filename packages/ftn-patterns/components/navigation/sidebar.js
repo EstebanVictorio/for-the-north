@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React,{ useState, useEffect } from 'react'
 import styled, {ThemeConsumer} from 'styled-components'
 import Link from 'next/link'
 import Icon from 'components/styled/icon'

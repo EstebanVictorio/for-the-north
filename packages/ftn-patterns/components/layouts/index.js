@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import Navbar from 'navigation/navbar'
 import Sidebar from 'navigation/sidebar'
 import styled, { createGlobalStyle, ThemeConsumer } from 'styled-components'
