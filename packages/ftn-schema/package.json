@@ -1,0 +1,9 @@
+{
+  "name": "ftn-schema",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express-graphql": "0.8.0"
+  }
+}

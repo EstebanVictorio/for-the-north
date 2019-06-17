@@ -16,6 +16,9 @@ const plugins = [
       displayName: true,
       preprocess: true,
     },
+  ],
+  [
+    require.resolve('babel-plugin-import-grphql')
   ]
 ]
 
