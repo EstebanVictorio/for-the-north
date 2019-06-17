@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@ftn/patterns": "1.0.0",
+    "@mdx-js/loader": "1.0.20",
+    "@next/mdx": "8.1.0",
     "next": "8.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
