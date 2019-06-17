@@ -18,7 +18,7 @@ const plugins = [
     },
   ],
   [
-    require.resolve('babel-plugin-import-grphql')
+    require.resolve('babel-plugin-import-graphql')
   ]
 ]
 

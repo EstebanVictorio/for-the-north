@@ -41,27 +41,32 @@ const PostList = () => (
           </li>
           <li className="post-entry">
             <Link>
-              <a>Components: How do they actually work</a>
+              <a>Components: <code>props</code> and how to take advantage of them (coming soon)</a>
             </Link>
           </li>
           <li className="post-entry">
             <Link>
-              <a>Components: <code>props</code> and how to take advantage of them</a>
+              <a>Components: How do they actually work (coming soon)</a>
             </Link>
           </li>
           <li className="post-entry">
             <Link>
-              <a>Components: The <code>class</code> component</a>
+              <a>Components: The <code>class</code> component (coming soon)</a>
             </Link>
           </li>
           <li className="post-entry">
             <Link>
-              <a>Components: Enter <code>state</code></a>
+              <a>Components: Enter <code>state</code> (coming soon)</a>
             </Link>
           </li>
           <li className="post-entry">
             <Link>
-              <a>Components: Lifecycle</a>
+              <a>Components: Lifecycle (coming soon)</a>
+            </Link>
+          </li>
+          <li className="post-entry">
+            <Link>
+              <a>Components: Intro to Hooks (coming soon)</a>
             </Link>
           </li>
         </ol>
