@@ -1,5 +1,6 @@
 import { Layout } from '@ftn/patterns'
 import styled from 'styled-components'
+import ReactMD from 'react-markdown'
 
 const StyledHeading = styled.h1`
   font-size: 40px;

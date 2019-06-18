@@ -1,14 +1,18 @@
 # Components: How to write them
 
 In the previous post, we've created a veeeery basic setup of how to React with
-browser-only resources. You can continue from there, or, you could learn how
-to set-up a more realistic environment here: [Set up a React Environment](/posts/2). If you don't want to go through this, everytime a `Component` comes up,
-you'll need to write this in the same `index.js` as the `App` component we
+browser-only resources.  
+You can continue from there, or, you could learn how
+to set-up a more realistic environment here: [Set up a React Environment](/posts/2).  
+
+
+If you don't want to go through this, everytime a `Component` comes up, you'll need to write this in the same
+`index.js` as the `App` component we
 already had.
 
 
 
-# How to write a component?
+## How to write a component?
 
 Components are the basic modular structure in a Front-End app.
 As we can recall from our last example, a component is written in the following
@@ -31,21 +35,27 @@ function App() {
 ```
 
 Basically, components are functions, that return the `JSX`-ish syntax you see.
-It looks a lot like `HTML`, but imagine it has superpowers. This is cool! It
-doesn't seem that hard so far. Well, it's not, except that the behavior it's
-different. This syntax describes what should a component return as
+It looks a lot like `HTML`, but imagine it has superpowers.  
+
+Cool!  Isn't it?  
+
+It doesn't seem that hard so far.  
+
+The trick here is that the behavior it's different.
+This syntax describes what should a component return as
 DOM-equivalent elements known as `React` elements. This way, you can isolate an
 structure with different elements. You might say: why should I wrap the elements
 of a component render phase in parentheses `()`? You don't have to, but, it is a
-good practice, especially if you are going to have more elements inside 
-(explained below).
+good practice, especially if you are going to have more elements inside.  
 
-# How to compose Components?
+Parentheses improve readability among components.
+
+## How to compose Components?
 
 Composing components (pun intended) isn't different from writing one all alone.
 
 You can do the following if you want to isolate different structures:
-# Example using the ultra basic setup
+## Example using the ultra basic setup
 ```js
 const List = () => (
   <ol>
@@ -66,7 +76,7 @@ const App = () => (
 )
 ```
 
-# Example using a React environment:
+## Example using a React environment:
 ```js
 // File: list.js
 import React from 'react'
@@ -95,13 +105,13 @@ const App = () => (
 )
 ```
 
-
 That would give you the following in the DOM:  
+
 ![Image](https://media.giphy.com/media/UuBwcJcpvuRQNKbDdL/giphy.gif)
 
 
 And that doesn't end there. You can do variations of this:
-# Basic Setup
+## Basic Setup
 ```js
 const ListItem1 = () => (
   <li>
@@ -129,7 +139,7 @@ const App = () => (
 )
 ```
 
-# React Environment
+## React Environment
 ```js
 // File: list-item-1.js
 import React from 'react'
@@ -199,7 +209,8 @@ const App = () => (
 
 This would result in an error, as `React` does not allow two `children`
 components to be rendered as a result of a component's render phase.
-So... how come we compose even further? There are two ways to do this:
+So... how come we compose even further?  
+There are two ways to do this:
 - Wrap the elements inside a valid element, like a `div` or a `span`
 (the parent wrapping element doesn't have to be any of those elements, it can
 be anything).
@@ -208,7 +219,7 @@ be anything).
 Speaking of `Fragment`, it is a component that acts as a wrapper, but is not
 shown at the DOM. It works like this:
 
-# Basic setup
+## Basic setup
 ```js
 const ListItem1 = () => (
   <li>
@@ -241,7 +252,7 @@ const App = () => (
 )
 ```
 
-# React environment
+## React environment
 ```js
 // File: list-item-1.js
 import React from 'react'
@@ -320,7 +331,7 @@ All of these examples will give you the following result:
 The last `Fragment` syntax depends on the environment you use, so,
 don't expect it to work out-of-the-box.
 
-# A last important feature
+## A last important feature
 One last thing to note here is... What happens if a custom `Component` created
 by us would render what we want as children components?
 
@@ -329,7 +340,7 @@ This is very simple to do. We take advantage of a `Component`'s `props`.
 `props` will be covered in the next post, but please, follow this example:
 
 
-# Basic Setup
+## Basic Setup
 ```js
 const ListItem1 = () => (
   <li>
@@ -365,7 +376,7 @@ ReactDOM.render(
 )
 ```
 
-# React environment
+## React environment
 ```js
 // File: list-item-1.js
 import React from 'react'
@@ -487,7 +498,7 @@ You're right. That is completely useless. You might as well could have done the
 following: 
 
 
-# Basic setup
+## Basic setup
 
 ```js
 const elementsToRender = [
@@ -533,7 +544,7 @@ ReactDOM.render(
 ```
 
 
-# React environment
+## React environment
 
 ```js
 // File: list-item.js

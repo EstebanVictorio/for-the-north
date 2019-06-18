@@ -30,12 +30,12 @@ const PostList = () => (
         <h2>Eager to learn?</h2>
         <ol>
         <li className="post-entry">
-            <Link href="/posts/1">
+            <Link prefetch href="/posts/welcome-to-react">
               <a>Welcome to React!</a>
             </Link>
           </li>
           <li className="post-entry">
-            <Link>
+            <Link prefetch href="/posts/how-to-write-components">
               <a>Components: How to write them</a>
             </Link>
           </li>
