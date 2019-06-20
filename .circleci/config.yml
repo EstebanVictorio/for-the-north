@@ -8,6 +8,8 @@ jobs:
       - run: yarn install --exact
       - run: yarn bootstrap
   build:
+    docker:
+      - image: circleci/node:10.16.0
     steps:
       - run: ls
       - run: yarn build
