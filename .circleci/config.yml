@@ -14,8 +14,8 @@ jobs:
       - image: circleci/node:10.16.0
     steps:
       - checkout
-      <<: *dependency_setup
-      <<: *build
+      - *dependency_setup
+      - *build
 workflows:
   version: 2
   setup_:
