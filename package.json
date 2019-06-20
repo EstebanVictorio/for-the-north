@@ -5,10 +5,9 @@
   ],
   "name": "for-the-north",
   "scripts": {
-    "help": "yarn lerna --help",
-    "bootstrap": "yarn lerna bootstrap",
-    "lerna-init": "yarn lerna init --independent",
-    "lerna-add": "yarn lerna add"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --parallel",
+    "link": "lerna link"
   },
   "devDependencies": {
     "lerna": "3.15.0"
