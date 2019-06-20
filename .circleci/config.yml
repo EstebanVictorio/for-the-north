@@ -1,13 +1,14 @@
+dependency_setup: &dependency_setup
+  steps:
+    - run: yarn install --exact
+    - run: yarn bootstrap
+build: &build
+  steps:
+    - run: yarn build
+    - run: yarn link
+
 version: 2
 jobs:
-  dependency_setup: &dependency_setup
-    steps:
-      - run: yarn install --exact
-      - run: yarn bootstrap
-  build: &build
-    steps:
-      - run: yarn build
-      - run: yarn link
   setup:
     docker:
       - image: circleci/node:10.16.0
