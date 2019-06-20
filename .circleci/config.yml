@@ -1,8 +1,8 @@
-dependency_setup_steps: &dependency_setup
+dependency_setup_steps: &dependency_setup_steps
   - checkout
   - run: yarn install --exact
   - run: yarn bootstrap
-build_steps: &build
+build_steps: &build_steps
   - run: yarn build
   - run: yarn link
 
