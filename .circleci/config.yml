@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:10.16.0
     steps:
       - checkout
+      - run: yarn -v
       - run: ls -a
       - run: echo "A first hello"
       - run: mkdir -p workspace_one
