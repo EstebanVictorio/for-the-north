@@ -12,8 +12,8 @@ jobs:
     docker:
       - image: circleci/node:10.16.0
     steps:
-      <<: *dependency_setup
-      <<: *build
+      <<: *dependency_setup_steps
+      <<: *build_steps
 workflows:
   version: 2
   setup_:
