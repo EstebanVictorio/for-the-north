@@ -13,7 +13,7 @@ jobs:
       - run: yarn link
 workflows:
   version: 2
-  setup_:
+  setup_and_build:
     jobs:
       - setup
       - build:
