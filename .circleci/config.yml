@@ -35,7 +35,7 @@ jobs:
     steps: *setup_steps
   build:
     docker: *docker
-    steps: &build_steps
+    steps: *build_steps
 workflows:
   version: 2
   setup_and_build:
