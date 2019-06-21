@@ -1,39 +1,48 @@
 version: 2
-jobs:
-  one:
-    docker:
-      - image: circleci/node:10.16.0
-    steps:
-      - checkout
-      - run: yarn -v
-      - run: ls -a
-      - run: echo "A first hello"
-      - run: mkdir -p workspace_one
-      - run: echo "Trying out workspaces" > workspace_one/test-output
-      - persist_to_workspace:
-        # Must be an absolute path, or relative path from workspace_one
-          root: workspace_one
+aliases:
+# Executor
+  - &docker
+    - image: circleci/node:10.16.0
+# Persistance
+  - &persist_to_workspace
+          root: workspace
           paths:
-           - test-output
-  two:
-    docker:
-      - image: circleci/node:10.16.0
-    steps:
+           - packages
+           - package.json
+           - lerna.json
+## Job steps: setup
+  - &setup_steps
       - checkout
-      - run: echo "A first chido"
+      - run: mkdir workspace
+      - run: mv packages workspace
+      - run: mv package.json workspace
+      - run: mv lerna.json workspace
+      - persist_to_workspace: *persist_to_workspace
+## Job steps: build
+  - &build_steps
       - attach_workspace:
-          at: workspace_one
-      - run: |
-          if [[ $(cat workspace_one/test-output) == "Trying out workspaces" ]]; then
-            echo  "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+          at: workspace
+      - run: cp -r workspace/packages .
+      - run: cp workspace/package.json .
+      - run: cp workspace/lerna.json .
+      - run: yarn install --exact
+      - run: yarn bootstrap
+      - run: yarn build
+      - run: yarn link
+
+
+jobs:
+  setup:
+    docker: *docker
+    steps: *setup_steps
+  build:
+    docker: *docker
+    steps: *build_steps
 workflows:
   version: 2
-  one_and_two:
+  setup_and_build:
     jobs:
-      - one
-      - two:
+      - setup
+      - build:
           requires:
-            - one
+            - setup
