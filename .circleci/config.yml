@@ -13,7 +13,7 @@ aliases:
 ## Job steps: setup
   - &setup_steps
       - checkout
-      - run: run mkdir for-the-north
+      - run: mkdir for-the-north
       - run: mv packages for-the-north
       - persist_to_workspace: *persist_to_workspace
 ## Job steps: build
