@@ -22,7 +22,7 @@ aliases:
   - &build_steps
       - attach_workspace:
           at: workspace
-      - run: cp workspace/packages .
+      - run: cp -r workspace/packages .
       - run: cp workspace/package.json .
       - run: cp workspace/lerna.json .
       - run: ls -a
