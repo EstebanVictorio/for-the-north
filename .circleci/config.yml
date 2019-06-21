@@ -23,7 +23,7 @@ aliases:
       - attach_workspace:
           at: workspace
       - run: cd workspace
-      - run: ls -a
+      - run: ls -a workspace
       - run: yarn install --exact
       - run: yarn bootstrap
       - run: yarn build
