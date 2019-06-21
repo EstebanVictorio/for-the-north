@@ -22,7 +22,6 @@ aliases:
   - &build_steps
       - attach_workspace:
           at: workspace
-      - run: cd for-the-north
       - run: ls -a
       - run: yarn install --exact
       - run: yarn bootstrap
