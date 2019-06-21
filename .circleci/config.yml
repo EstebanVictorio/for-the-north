@@ -18,7 +18,7 @@ aliases:
       - persist_to_workspace: *persist_to_workspace
 ## Job steps: build
   - &build_steps
-      - attack_worspace:
+      - attach_worspace:
         - at: for-the-north
       - run: cd for-the-north
       - run: yarn install --exact
