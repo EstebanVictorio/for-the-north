@@ -22,8 +22,10 @@ aliases:
   - &build_steps
       - attach_workspace:
           at: workspace
-      - run: cd workspace
-      - run: ls -a workspace
+      - run: cp workspace/packages .
+      - run: cp workspace/package.json .
+      - run: cp workspace/lerna.json .
+      - run: ls -a
       - run: yarn install --exact
       - run: yarn bootstrap
       - run: yarn build
