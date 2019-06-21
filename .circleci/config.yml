@@ -5,7 +5,7 @@ aliases:
     - image: circleci/node:10.16.0
 # Persistance
   - &persist_to_workspace
-          root: for-the-north
+          root: workspace
           paths:
            - packages
            - package.json
@@ -13,16 +13,17 @@ aliases:
 ## Job steps: setup
   - &setup_steps
       - checkout
-      - run: mkdir for-the-north
-      - run: mv packages for-the-north
-      - run: mv package.json for-the-north
-      - run: mv lerna.json for-the-north
+      - run: mkdir workspace
+      - run: mv packages workspace
+      - run: mv package.json workspace
+      - run: mv lerna.json workspace
       - persist_to_workspace: *persist_to_workspace
 ## Job steps: build
   - &build_steps
       - attach_workspace:
-          at: for-the-north
+          at: workspace
       - run: cd for-the-north
+      - run: ls -a
       - run: yarn install --exact
       - run: yarn bootstrap
       - run: yarn build
