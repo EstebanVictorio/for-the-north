@@ -3,11 +3,8 @@ aliases:
 # Executor
   - &docker
     - image: circleci/node:10.16.0
-# Workspaces
-  - &workspace
-    - for-the-north
 # Persistance
-  - &workspace_path
+  - &persist_to_workspace
           root: for-the-north
           paths:
            - packages
@@ -16,13 +13,14 @@ aliases:
 ## Job steps: setup
   - &setup_steps
       - checkout
-      - run: run mkdir *workspace
-      - run: mv packages *workspace
-      - persist_to_workspace: *workspace_path
+      - run: run mkdir for-the-north
+      - run: mv packages for-the-north
+      - persist_to_workspace: *persist_to_workspace
 ## Job steps: build
   - &build_steps
       - attack_worspace:
-        - at: *workspace
+        - at: for-the-north
+      - run: cd for-the-north
       - run: yarn install --exact
       - run: yarn bootstrap
       - run: yarn build
