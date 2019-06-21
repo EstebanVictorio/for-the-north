@@ -15,11 +15,13 @@ aliases:
       - checkout
       - run: mkdir for-the-north
       - run: mv packages for-the-north
+      - run: mv package.json for-the-north
+      - run: mv lerna.json for-the-north
       - persist_to_workspace: *persist_to_workspace
 ## Job steps: build
   - &build_steps
-      - attach_worspace:
-        - at: for-the-north
+      - attach_workspace:
+          at: for-the-north
       - run: cd for-the-north
       - run: yarn install --exact
       - run: yarn bootstrap
@@ -33,7 +35,7 @@ jobs:
     steps: *setup_steps
   build:
     docker: *docker
-    steps: *build_steps
+    steps: &build_steps
 workflows:
   version: 2
   setup_and_build:
