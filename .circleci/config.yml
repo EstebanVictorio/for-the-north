@@ -25,7 +25,6 @@ aliases:
       - run: cp -r workspace/packages .
       - run: cp workspace/package.json .
       - run: cp workspace/lerna.json .
-      - run: ls -a
       - run: yarn install --exact
       - run: yarn bootstrap
       - run: yarn build
