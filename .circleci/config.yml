@@ -1,28 +1,41 @@
 version: 2
 aliases:
+# Executor
   - &docker
     - image: circleci/node:10.16.0
+# Workspaces
+  - &workspace
+    - for-the-north
+# Persistance
+  - &workspace_path
+          root: for-the-north
+          paths:
+           - packages
+           - package.json
+           - lerna.json
+## Job steps: setup
+  - &setup_steps
+      - checkout
+      - run: run mkdir *workspace
+      - run: mv packages *workspace
+      - persist_to_workspace: *workspace_path
+## Job steps: build
+  - &build_steps
+      - attack_worspace:
+        - at: *workspace
+      - run: yarn install --exact
+      - run: yarn bootstrap
+      - run: yarn build
+      - run: yarn link
+
+
 jobs:
   setup:
     docker: *docker
-    steps:
-      - checkout
-      - run: ls -a
-      - run: yarn install --exact
-      - run: yarn bootstrap
-      - run: mkdir artifacts
-      - store_artifacts:
-          path: artifacts/packages
-      - store_artifacts:
-          path: artifacts/lerna.json
-      - store_artifacts:
-          path: artifacts/package.json
+    steps: *setup_steps
   build:
     docker: *docker
-    steps:
-      - run: ls
-      - run: yarn build
-      - run: yarn link
+    steps: *build_steps
 workflows:
   version: 2
   setup_and_build:
