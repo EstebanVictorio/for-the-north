@@ -17,7 +17,9 @@
     "styled-components": "4.3.1"
   },
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build":"next build",
+    "start": "next start"
   },
   "devDependencies": {
     "babel-plugin-import-graphql": "2.7.0",
