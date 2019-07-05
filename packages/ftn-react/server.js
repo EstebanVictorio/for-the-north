@@ -14,7 +14,6 @@ const handle = app.getRequestHandler()
 
 const serverHandler = (req,res) => {
   const { query } = parse(req.url, true)
-  req.url = req.url.replace('/ftn-react','')
   app.render(req, res, req.path, query)
 }
 
