@@ -12,22 +12,27 @@ const StyledNavbar = styled.nav`
   align-items: center;
   color: var(--accent);
   box-sizing: border-box;
-  background-color: var(--primary);
-  box-shadow: 10px 0 10px -2px black;
+  background-color: var(--secondary);
+  
 
   @media screen and (min-width: 144px) and (max-width: 1024px){
     
   }
 
-  &.border {
-    border-bottom: 4px solid var(--focused);
-  }
+
+  /* &:hover {
+    box-shadow: 10px 0 10px -2px black;
+    background-color: var(--primary);
+    &.border {
+      border-bottom: 4px solid var(--focused);
+    }
+  } */
 `
 
 const StyledLogo = styled.a`
-    color: var(--accent);
     cursor: pointer;
-    padding: 0 0.5em;
+    font-size: 32px;
+    color: var(--accent);
     text-decoration: none;
     box-sizing: border-box;
 `
@@ -45,7 +50,14 @@ const StyledMenuToggleButton = styled.input`
   background-repeat: no-repeat;
   background-color: transparent;
   background-size: 40px 40px;
-  background-image: url('/static/icons/menu.svg');
+
+  &.open {
+    background-image: url('/static/icons/close.svg');
+  }
+
+  &.closed {
+    background-image: url('/static/icons/menu.svg');
+  }
 
   @media screen and (min-width: 144px) {
     display: initial;
@@ -61,7 +73,7 @@ const StyledMenuToggleButton = styled.input`
 }
 `
 
-const Navbar = ({handleToggleMenuClick, border}) => {
+const Navbar = ({handleToggleMenuClick, border, open}) => {
 
   return (
     <ThemeConsumer>
@@ -70,7 +82,7 @@ const Navbar = ({handleToggleMenuClick, border}) => {
           <StyledNavbar className={`${border ? 'border':''}`}>
             <StyledMenuToggleButton
               type="button"
-              className={iconTheme}
+              className={`${iconTheme} ${open ? 'open':'closed'}`}
               onClick={handleToggleMenuClick}
             />
             <Link prefetch href="/">

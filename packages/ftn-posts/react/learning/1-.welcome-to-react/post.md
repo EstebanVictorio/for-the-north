@@ -35,7 +35,7 @@ ReactDOM.render(<App />, container)
 
 - An HTML file with the following structure:
 ```html
-<!-- index.html: You don't need to have the same exact syntax. -->
+<!-- index.html: You dont need to have the same exact syntax. -->
 
 <!DOCTYPE html>
 <html lang="en">

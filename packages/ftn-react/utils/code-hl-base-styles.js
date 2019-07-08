@@ -8,7 +8,8 @@ export default createGlobalStyle`
 
 .language-javascript {
   border-radius: 5px;
-  margin: 60px;
+  margin: 10px;
+  font-size: 15px;
 }
 
 .hljs {

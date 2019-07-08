@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import Navbar from 'navigation/navbar'
 import Sidebar from 'navigation/sidebar'
 import styled, { createGlobalStyle, ThemeConsumer } from 'styled-components'
@@ -25,14 +25,25 @@ const BaseStyles = createGlobalStyle`
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  font-family: bFont;
+  font-family: lato;
   background-color: var(--landscape);
 }
+
+code, pre {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-align: justify;
+}
+
 `
 
+
 const StyledLayout = styled.main`
+  box-sizing: border-box;
   display: grid;
   @media screen and (min-width: 144px) {
     grid-template-areas:
@@ -45,23 +56,51 @@ const StyledLayout = styled.main`
     grid-template-areas:
       "navbar navbar"
       "sidebar main-content";
-    grid-template-columns: minmax(min-content,max-content) 1fr;
+    grid-template-columns: 1fr auto;
   }
 `
 
 const StyledMainContent = styled.section`
-  box-sizing: border-box;
-  padding: 10px;
-  grid-area: main-content;
-  font-family: lato;
-  font-size: 20px;
-  color: var(--accent);
-  height: calc(100vh - 60px);
   overflow: scroll;
+  font-family: lato;
+  color: var(--accent);
+  box-sizing: border-box;
+  grid-area: main-content;
+
+  @media screen and (min-width: 144px) and (max-width: 1024px) {
+    font-size: 22px;
+    padding: 10px 20px;
+    &.open {
+      display:none;
+    }
+
+    &.closed {
+      height: calc(100vh - 60px);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 20px;
+    padding: 0 180px;
+    height: calc(100vh - 60px);
+  }
 `
 
 const Layout = ({ theme, children }) => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
+  useEffect(() => {
+      setOpen(width >= 1024)
+  },[width])
   
   const handleToggleMenuClick = () => setOpen(!open)
   return (
@@ -75,13 +114,17 @@ const Layout = ({ theme, children }) => {
       <ThemeConsumer>
         { ({navbarBorder}) => (
             <Navbar
+              open={open}
               border={navbarBorder}
               handleToggleMenuClick={handleToggleMenuClick}
             />
         ) }
       </ThemeConsumer>
-      <Sidebar open={open} handleToggleMenuClick={handleToggleMenuClick} />
-      <StyledMainContent>
+      <Sidebar
+        open={open}
+        handleToggleMenuClick={handleToggleMenuClick}
+      />
+      <StyledMainContent className={open ? 'open' : 'closed'}>
         { children }
       </StyledMainContent>
     </StyledLayout>
