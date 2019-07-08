@@ -1,7 +1,8 @@
-import React,{ useState, useEffect } from 'react'
-import styled, {ThemeConsumer} from 'styled-components'
-import Link from 'next/link'
+import Link from 'navigation/app-link'
 import Icon from 'components/styled/icon'
+import styled, { ThemeConsumer } from 'styled-components'
+import React,{ useState, useEffect } from 'react'
+
 const StyledSidebar = styled.aside`
   display: flex;
   top: 60px;

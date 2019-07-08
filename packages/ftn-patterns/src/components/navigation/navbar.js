@@ -1,5 +1,5 @@
+import Link from 'navigation/app-link'
 import React,{ useState } from 'react'
-import Link from 'next/link'
 import styled,{ ThemeConsumer } from 'styled-components'
 
 const StyledNavbar = styled.nav`

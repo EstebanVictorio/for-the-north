@@ -1,28 +1,34 @@
 import React from 'react';
-import { Theme } from '@ftn/patterns'
+import { Theme, NavigationProvider } from '@ftn/patterns'
 import App from 'next/app';
 import CodeHLBaseStyles from 'utils/code-hl-base-styles'
+import { BASE_PATH } from 'utils/constants'
 
 class Blog extends App {
   static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
+    let pageProps = {}
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+      pageProps = await Component.getInitialProps(ctx)
     }
-    
+
+    let basePath = process.env.NODE_ENV === 'production' ? BASE_PATH : ''
+  
     return {
+      basePath,
       pageProps
     }
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, basePath } = this.props
     return (
       <>
       <CodeHLBaseStyles />
       <Theme selected="snowy-plain">
-        <Component  {...pageProps} />
+        <NavigationProvider value={basePath}>
+          <Component  {...pageProps} />
+        </NavigationProvider>
       </Theme>
       </>
     )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Link from 'next/link'
+import { Link } from '@ftn/patterns'
 
 const StyledColumns = styled.div`
   display: flex;
@@ -39,66 +39,11 @@ const PostList = () => (
               <a>Components: How to write them</a>
             </Link>
           </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: <code>props</code> and how to take advantage of them (coming soon)</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: How do they actually work (coming soon)</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: The <code>class</code> component (coming soon)</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: Enter <code>state</code> (coming soon)</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: Lifecycle (coming soon)</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Components: Intro to Hooks (coming soon)</a>
-            </Link>
-          </li>
         </ol>
       </div>
       <div className="post-index-list">
         <h2>Want to empower your tooling?</h2>
         <ol>
-          <li className="post-entry">
-            <Link>
-              <a>Set up a React Environment</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Hot Reload: the hard way</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Hot Reload: the much easier way</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a>Styled Components</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link>
-              <a><code>styled-components</code> (nope, not a duplicate)</a>
-            </Link>
-          </li>
         </ol>
       </div>
     </StyledColumns>
