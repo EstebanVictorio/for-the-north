@@ -5,15 +5,14 @@ import React,{ useState, useEffect } from 'react'
 
 const StyledSidebar = styled.aside`
   top: 60px;
-  width: 240px;
   display: flex;
   position: sticky;
   grid-area: sidebar;
-  align-items: flex-end;
   box-sizing: border-box;
   flex-direction: column;
   background-color: var(--secondary);
   @media screen and (min-width: 144px) and (max-width: 1024px) {
+    align-items: center;
     .sidebar-toggle-button {
       display: none;
     }
@@ -29,7 +28,9 @@ const StyledSidebar = styled.aside`
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 10px 0;
+    padding: 25px 0;
+    width: 240px;
+    align-items: flex-end;
   }
 
   .sidebar-toggle-button {
@@ -63,6 +64,7 @@ const StyledSidebar = styled.aside`
 `
 
 const StyledNavLink = styled.a`
+  margin: 10px 0;
   font-size: 20px;
   cursor: pointer;
   color: var(--accent);

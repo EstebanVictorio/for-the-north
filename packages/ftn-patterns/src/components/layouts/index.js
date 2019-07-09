@@ -56,7 +56,7 @@ const StyledLayout = styled.main`
     grid-template-areas:
       "navbar navbar"
       "sidebar main-content";
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
   }
 `
 
@@ -80,21 +80,23 @@ const StyledMainContent = styled.section`
   }
 
   @media screen and (min-width: 1024px) {
+    padding: 5px 180px 5px 50px;
     font-size: 20px;
-    padding: 0 180px;
     height: calc(100vh - 60px);
   }
 `
 
 const Layout = ({ theme, children }) => {
   const [open, setOpen] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
   
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
+    if(typeof window !== 'undefined') {
+      const handleResize = () => setWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
     }
   })
 
