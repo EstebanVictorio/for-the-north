@@ -1,7 +1,10 @@
 const express = require("express")
 const proxy = require("http-proxy-middleware")
-const PORT = process.env.PORT || 3000
+const dotenv = require("dotenv")
 
+dotenv.config()
+
+const PORT = process.env.PORT || 3000
 const REACT_BLOG = "/ftn-react"
 const JS_BLOG = "/ftn-javascript"
 const NEXT_JS_BLOG = "/ftn-next"
@@ -15,10 +18,12 @@ let httpProxy = proxy({
     "/ftn-next": "http://localhost:4003"
   }
 })
-
 let app = express()
 app.use(NEXT_JS_BLOG, httpProxy)
 app.use(REACT_BLOG, httpProxy)
-app.use(JS_BLOG, httpProxy)
+app.use(JS_BLOG, (req, res, next) => {
+  console.log("Crossed proxy!")
+  httpProxy(req, res, next)
+})
 
 app.listen(PORT)

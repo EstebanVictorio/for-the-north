@@ -1,4 +1,5 @@
-import Layout from 'components/styled/layout'
+import Layout from "components/styled/layout"
+
 const Home = () => (
   <Layout>
     <div>Home</div>

@@ -16,8 +16,15 @@ const port = process.env.PORT || 3001
 const handle = app.getRequestHandler()
 
 const serverHandler = (req, res) => {
-  const { query } = parse(req.url, true)
-  app.render(req, res, req.path, query)
+  const parsedUrl = parse(req.url, true)
+  const newPath = req.path.replace("/ftn-javascript", "/")
+  if (/_next/.test(parsedUrl.pathname)) {
+    console.log(`Url matches _next`)
+    console.log(`Url: ${req.url}`)
+    handle(req, res, parsedUrl)
+  } else {
+    app.render(req, res, newPath, parsedUrl.query)
+  }
 }
 
 const schemaResolver = (err, data) => {

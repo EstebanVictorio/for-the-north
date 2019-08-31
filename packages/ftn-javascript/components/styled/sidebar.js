@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import Link from 'next/link'
+import { useState, useEffect } from "react"
+import styled from "styled-components"
+import Link from "next/link"
 
 const StyledSidebar = styled.aside`
   display: flex;
@@ -9,7 +9,7 @@ const StyledSidebar = styled.aside`
   box-shadow: 0 4px 10px -2px;
   background-color: rgb(175, 153, 6);
   height: calc(100vh - 60px);
-  @media screen and (min-width: 144px) and (max-width: 1023px){
+  @media screen and (min-width: 144px) and (max-width: 1023px) {
     .sidebar-toggle-button {
       display: none;
     }
@@ -17,7 +17,6 @@ const StyledSidebar = styled.aside`
     &.open {
       height: initial;
     }
-
 
     &.closed {
       height: 0;
@@ -31,7 +30,6 @@ const StyledSidebar = styled.aside`
 
     &.open {
       width: initial;
-      
     }
 
     &.closed {
@@ -41,11 +39,11 @@ const StyledSidebar = styled.aside`
 
   .sidebar-toggle-button {
     &.open {
-      background-image: url('/static/icons/collapse-left.svg');
+      background-image: url("/static/icons/collapse-left.svg");
     }
 
     &.closed {
-      background-image: url('/static/icons/expand-right.svg');
+      background-image: url("/static/icons/expand-right.svg");
     }
 
     width: 100%;
@@ -96,28 +94,25 @@ const StyledNavLink = styled.a`
     filter: invert(1);
   }
 
-  @media screen and (min-width: 144px){
-    &.open{
+  @media screen and (min-width: 144px) {
+    &.open {
       display: flex;
     }
 
-
-    &.closed{
+    &.closed {
       display: none;
     }
   }
 
-
-  @media screen and (min-width: 1024px){
-    &.open{
+  @media screen and (min-width: 1024px) {
+    &.open {
       display: flex;
       .link-text {
         display: initial;
       }
     }
 
-
-    &.closed{
+    &.closed {
       display: flex;
       .link-text {
         display: none;
@@ -126,10 +121,10 @@ const StyledNavLink = styled.a`
   }
 `
 
-const Sidebar = ({open, handleToggleMenuClick}) => {
-  const [openClass, setOpenClass] = useState('open')
+const Sidebar = ({ open, handleToggleMenuClick }) => {
+  const [openClass, setOpenClass] = useState("open")
 
-  useEffect(() => setOpenClass(open ? 'open' : 'closed'),[open])
+  useEffect(() => setOpenClass(open ? "open" : "closed"), [open])
 
   return (
     <StyledSidebar className={openClass}>
@@ -140,23 +135,26 @@ const Sidebar = ({open, handleToggleMenuClick}) => {
       />
       <Link prefetch href="/posts">
         <StyledNavLink className={openClass}>
-          <img className="link-icon" src="/static/icons/post.svg" alt="posts"/>
-          <span className="link-text">
-            Posts
-          </span>
+          <img
+            className="link-icon"
+            src="./ftn-javascript/static/icons/post.svg"
+            alt="posts"
+          />
+          <span className="link-text">Posts</span>
         </StyledNavLink>
       </Link>
       <Link prefetch href="/about">
         <StyledNavLink className={openClass}>
-          <img className="link-icon" src="/static/icons/about.svg" alt="about"/>
-          <span className="link-text">
-            About
-          </span>
+          <img
+            className="link-icon"
+            src="/static/icons/about.svg"
+            alt="about"
+          />
+          <span className="link-text">About</span>
         </StyledNavLink>
       </Link>
     </StyledSidebar>
   )
 }
-
 
 export default Sidebar
