@@ -1,21 +1,29 @@
-import { Layout } from '@ftn/patterns'
-import styled from 'styled-components'
-import ReactMD from 'react-markdown'
+import { Layout, BlogNavigation } from "@ftn/patterns"
+import styled from "styled-components"
+import ReactMD from "react-markdown"
+import PostNavigation from "components/navigation/post-navigation"
+import RecentPostsNavigation from "components/navigation/recent-posts-navigation"
 
 const StyledHeading = styled.h1`
-  font-size: 40px;
+  font-size: 150px;
+  text-align: center;
+  margin-bottom: 40px;
 `
 
-const Home = ({ theme }) => (
-  <Layout theme={theme}>
-    <StyledHeading>
-      Welcome to FTN - React Edition!
-    </StyledHeading>
-    <h3>
-    A place to check the bare bones on how to "React"
-    </h3>
+const StyledSubtitle = styled.h2`
+  margin: 0;
+  font-size: 70px;
+  text-align: center;
+`
+
+const Home = () => (
+  <Layout>
+    <BlogNavigation />
+    <StyledHeading>For The North</StyledHeading>
+    <StyledSubtitle>React Edition</StyledSubtitle>
+    <PostNavigation />  
+    <RecentPostsNavigation />
   </Layout>
 )
-
 
 export default Home

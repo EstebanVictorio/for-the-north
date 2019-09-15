@@ -1,0 +1,26 @@
+{
+  "name": "@ftn/api",
+  "version": "1.0.0",
+  "description": "The Feed API",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "8.1.0",
+    "express": "4.17.1",
+    "link-module-alias": "1.2.0",
+    "nodemon": "1.19.2"
+  },
+  "_moduleAliases": {
+    "hof": "hof",
+    "boot": "boot",
+    "feed": "feed",
+    "routing": "routing",
+    "constants": "constants",
+    "exceptions": "exceptions",
+    "controllers": "controllers",
+    "middlewares": "middlewares"
+  },
+  "scripts": {
+    "dev": "nodemon server.js"
+  }
+}

@@ -1,7 +1,7 @@
-import React,{ useState, useEffect } from 'react'
-import Navbar from 'navigation/navbar'
-import Sidebar from 'navigation/sidebar'
-import styled, { createGlobalStyle, ThemeConsumer } from 'styled-components'
+import React, { useState, useEffect } from "react"
+import Navbar from "navigation/navbar"
+import Sidebar from "navigation/sidebar"
+import styled, { createGlobalStyle, ThemeConsumer } from "styled-components"
 
 const BaseStyles = createGlobalStyle`
 :root {
@@ -9,7 +9,7 @@ const BaseStyles = createGlobalStyle`
   --accent : ${({ content }) => content.accent};
   --primary : ${({ meta }) => meta.primary};
   --secondary : ${({ meta }) => meta.secondary};
-  --landscape : ${({ content }) => content. landscape};
+  --landscape : ${({ content }) => content.landscape};
 }
 
 @font-face{
@@ -41,7 +41,6 @@ p {
 
 `
 
-
 const StyledLayout = styled.main`
   box-sizing: border-box;
   display: grid;
@@ -61,7 +60,6 @@ const StyledLayout = styled.main`
 `
 
 const StyledMainContent = styled.section`
-  overflow: scroll;
   font-family: lato;
   color: var(--accent);
   box-sizing: border-box;
@@ -71,7 +69,7 @@ const StyledMainContent = styled.section`
     font-size: 22px;
     padding: 10px 20px;
     &.open {
-      display:none;
+      display: none;
     }
 
     &.closed {
@@ -88,48 +86,44 @@ const StyledMainContent = styled.section`
 
 const Layout = ({ theme, children }) => {
   const [open, setOpen] = useState(false)
-  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
-  
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  )
+
   useEffect(() => {
-    if(typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const handleResize = () => setWidth(window.innerWidth)
-      window.addEventListener('resize', handleResize)
+      window.addEventListener("resize", handleResize)
       return () => {
-        window.removeEventListener('resize', handleResize)
+        window.removeEventListener("resize", handleResize)
       }
     }
   })
 
   useEffect(() => {
-      setOpen(width >= 1024)
-  },[width])
-  
+    setOpen(width >= 1024)
+  }, [width])
+
   const handleToggleMenuClick = () => setOpen(!open)
   return (
     <>
-    <ThemeConsumer>
-      {
-        themeProps => <BaseStyles {...themeProps}/>
-      }
-    </ThemeConsumer>
-    <StyledLayout>
       <ThemeConsumer>
-        { ({navbarBorder}) => (
+        {themeProps => <BaseStyles {...themeProps} />}
+      </ThemeConsumer>
+      <StyledLayout>
+        <ThemeConsumer>
+          {({ navbarBorder }) => (
             <Navbar
               open={open}
               border={navbarBorder}
               handleToggleMenuClick={handleToggleMenuClick}
             />
-        ) }
-      </ThemeConsumer>
-      <Sidebar
-        open={open}
-        handleToggleMenuClick={handleToggleMenuClick}
-      />
-      <StyledMainContent className={open ? 'open' : 'closed'}>
-        { children }
-      </StyledMainContent>
-    </StyledLayout>
+          )}
+        </ThemeConsumer>
+        <StyledMainContent className={open ? "open" : "closed"}>
+          {children}
+        </StyledMainContent>
+      </StyledLayout>
     </>
   )
 }

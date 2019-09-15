@@ -1,9 +1,10 @@
-import Link from 'navigation/app-link'
-import React,{ useState } from 'react'
-import styled,{ ThemeConsumer } from 'styled-components'
+import Link from "navigation/app-link"
+import React, { useState } from "react"
+import styled, { ThemeConsumer } from "styled-components"
 
 const StyledNavbar = styled.nav`
   top: 0;
+  padding: 20px;
   height: 60px;
   display: flex;
   font-size: 32px;
@@ -13,12 +14,9 @@ const StyledNavbar = styled.nav`
   color: var(--accent);
   box-sizing: border-box;
   background-color: var(--secondary);
-  
 
-  @media screen and (min-width: 144px) and (max-width: 1024px){
-    
+  @media screen and (min-width: 144px) and (max-width: 1024px) {
   }
-
 
   /* &:hover {
     box-shadow: 10px 0 10px -2px black;
@@ -30,11 +28,11 @@ const StyledNavbar = styled.nav`
 `
 
 const StyledLogo = styled.a`
-    cursor: pointer;
-    font-size: 32px;
-    color: var(--accent);
-    text-decoration: none;
-    box-sizing: border-box;
+  cursor: pointer;
+  font-size: 32px;
+  color: var(--accent);
+  text-decoration: none;
+  box-sizing: border-box;
 `
 
 const StyledMenuToggleButton = styled.input`
@@ -73,26 +71,23 @@ const StyledMenuToggleButton = styled.input`
 }
 `
 
-const Navbar = ({handleToggleMenuClick, border, open}) => {
-
+const Navbar = ({ handleToggleMenuClick, border, open }) => {
   return (
     <ThemeConsumer>
-      {
-        ({ iconTheme }) => (
-          <StyledNavbar className={`${border ? 'border':''}`}>
-            <StyledMenuToggleButton
-              type="button"
-              className={`${iconTheme} ${open ? 'open':'closed'}`}
-              onClick={handleToggleMenuClick}
-            />
-            <Link prefetch href="/">
-              <StyledLogo>
-                <strong>FTN</strong>
-              </StyledLogo>
-            </Link>
-          </StyledNavbar>
-        )
-      }
+      {({ iconTheme }) => (
+        <StyledNavbar className={`${border ? "border" : ""}`}>
+          <StyledMenuToggleButton
+            type="button"
+            className={`${iconTheme} ${open ? "open" : "closed"}`}
+            onClick={handleToggleMenuClick}
+          />
+          <Link prefetch href="/">
+            <StyledLogo>
+              <strong>FTN</strong>
+            </StyledLogo>
+          </Link>
+        </StyledNavbar>
+      )}
     </ThemeConsumer>
   )
 }

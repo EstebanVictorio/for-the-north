@@ -1,0 +1,15 @@
+{
+  "posts": {
+    "learning": [
+      {
+        "id": 1,
+        "date": "",
+        "name": "prototypes",
+        "title": "Prototypes",
+        "url": "",
+        "iconUrl": "/static/icons/blueprints.svg"
+      }
+    ],
+    "tooling": []
+  }
+}
