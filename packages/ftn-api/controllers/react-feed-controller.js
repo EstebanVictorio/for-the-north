@@ -1,6 +1,12 @@
 const feed = require("feed/react.json")
-
+const { REACT_JS } = require("constants/collections")
+const FirebaseAgent = require("agents/oracles/firebase")
 class ReactFeedController {
+  constructor() {
+    this.agent = new FirebaseAgent()
+    this.agent.ignite()
+  }
+
   handler(request, response) {
     const { resource } = request.params
     if (!resource) {
@@ -14,10 +20,10 @@ class ReactFeedController {
     return response.send(feed)
   }
 
-  learning(request, response) {
-    const { posts } = feed
-    const { learning } = posts
-    return response.send(learning)
+  async learning(request, response) {
+    const collection = await this.agent.readCollection(REACT_JS, "learning")
+
+    return response.send(collection)
   }
 
   tooling(request, response) {

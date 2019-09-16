@@ -14,8 +14,8 @@ class SchemaGateway {
 
   setSchemaSettings(err, data, resolve, reject) {
     if (err) {
-      console.log("Schema File could not be found")
       reject("Schema file could not be found")
+      throw new NotFound("Schema file could not be found")
     } else {
       console.log("Schema found!")
       const schema = buildSchema(data.toString())
