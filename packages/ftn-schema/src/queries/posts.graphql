@@ -1,0 +1,7 @@
+type SelectedPost {
+  post: Post
+}
+
+type RecentPosts {
+  posts: [Post!]
+}

@@ -1,27 +1,27 @@
 const FileSystem = require("fs")
-const { buildSchema } = require("graphql")
+const { buildSchema, validateSchema, GraphQLSchema } = require("graphql")
 const getGraphQLServerMiddleware = require("express-graphql")
-const { rootValue } = require("@ftn/schema")
+const SDL = require("@ftn/schema")
 const NotFound = require("exceptions/not-found")
 
 class SchemaGateway {
   constructor(graphiql) {
+    console.log("SDL:", SDL)
     this.schemaSettings = {
-      graphiql,
-      rootValue
+      graphiql
     }
+    // console.log(rootValue)
   }
 
-  setSchemaSettings(err, data, resolve, reject) {
-    if (err) {
-      reject("Schema file could not be found")
-      throw new NotFound("Schema file could not be found")
+  setSchemaSettings() {
+    if (!validateSchema(SDL)) {
+      reject("Invalid Schema file")
+      throw new NotFound("Schema file is invalid,")
     } else {
-      console.log("Schema found!")
-      const schema = buildSchema(data.toString())
+      // const schema = buildSchema(data.toString())
       this.schemaSettings = {
         ...this.schemaSettings,
-        schema
+        SDL
       }
       resolve()
     }
@@ -34,7 +34,8 @@ class SchemaGateway {
   }
 
   async useSchema() {
-    await new Promise((res, rej) => this.readSchema(res, rej))
+    // await new Promise((res, rej) => this.readSchema(res, rej))
+    this.setSchemaSettings()
     return getGraphQLServerMiddleware(this.schemaSettings)
   }
 }

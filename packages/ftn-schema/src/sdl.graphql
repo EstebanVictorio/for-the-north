@@ -1,0 +1,14 @@
+# import Post from './types/posts.graphql'
+# import RecentPosts, SelectedPost from './queries/posts.graphql'
+# import CreatePostResult, UpdatePostResult, DeletePostResult from './mutations/posts.graphql'
+
+type Query {
+  recent: RecentPosts
+  post(id: Int!): SelectedPost
+}
+
+type Mutation {
+  createPost(markdown: String!): CreatePostResult!
+  updatePost(id: Int!, markdown: String!): UpdatePostResult!
+  deletePost(id: Int!): DeletePostResult!
+}

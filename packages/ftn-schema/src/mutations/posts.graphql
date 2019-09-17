@@ -1,0 +1,14 @@
+type CreatePostResult {
+  id: Int!
+  status: Int!
+}
+
+type UpdatePostResult {
+  id: Int!
+  status: Int!
+}
+
+type DeletePostResult {
+  id: Int!
+  status: Int!
+}

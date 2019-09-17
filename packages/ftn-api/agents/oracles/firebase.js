@@ -27,18 +27,15 @@ class Firebase {
     return collection
   }
 
-  async readDocumentCollection(name, document, collection) {
+  async readDocumentCollectionData(collection, document, name) {
     if (!this.db) {
       throw new FireStoreOff()
     }
 
-    const documentCollections = []
-    const query = await this.db.collection(name).doc(document)
-    const collections = await query.collection(collection)
-    documentCollections.map(collection =>
-      documentCollections.push({ ...collection })
-    )
-    return documentCollections
+    const query = await this.db.collection(collection).doc(document)
+    const snapshot = await query.get()
+    const data = snapshot.get(name)
+    return data
   }
 }
 

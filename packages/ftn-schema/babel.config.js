@@ -1,30 +1,21 @@
-const path = require('path')
-const root = './src'
+const path = require("path")
+const root = "./src"
 const aliases = {
-  mutations: `${root}/mutations`,
-  queries: `${root}/queries`,
-  root: `${root}/root.js`
+  utils: `${root}/utils`
 }
 
-const presets = 
-[
-  ['@babel/preset-env'],
-]
-
+const presets = [["@babel/preset-env"]]
 
 const plugins = [
   [
-    require.resolve('babel-plugin-module-resolver'),
+    require.resolve("babel-plugin-module-resolver"),
     {
-      root:[ root ],
+      root: [root],
       alias: aliases
     }
   ],
-  [
-    require.resolve('babel-plugin-import-graphql')
-  ]
+  [require.resolve("babel-plugin-import-graphql")]
 ]
-
 
 module.exports = {
   presets,
