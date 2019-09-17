@@ -16,18 +16,29 @@ class Firebase {
     this.db = this.admin.firestore()
   }
 
-  async readCollection(name, document = "") {
+  async readCollection(name) {
     if (!this.db) {
       throw new FireStoreOff()
     }
     const collection = []
-    const query = await (document
-      ? this.db.collection(name).doc(document)
-      : this.db.collection(name))
+    const query = await this.db.collection(name)
     const snapshot = await query.get()
-    console.log(snapshot)
     snapshot.docs.map(snapshotDoc => collection.push({ ...snapshotDoc.data() }))
     return collection
+  }
+
+  async readDocumentCollection(name, document, collection) {
+    if (!this.db) {
+      throw new FireStoreOff()
+    }
+
+    const documentCollections = []
+    const query = await this.db.collection(name).doc(document)
+    const collections = await query.collection(collection)
+    documentCollections.map(collection =>
+      documentCollections.push({ ...collection })
+    )
+    return documentCollections
   }
 }
 

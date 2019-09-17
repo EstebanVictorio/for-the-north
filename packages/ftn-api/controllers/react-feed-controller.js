@@ -21,7 +21,10 @@ class ReactFeedController {
   }
 
   async learning(request, response) {
-    const collection = await this.agent.readCollection(REACT_JS, "learning")
+    const collection = await this.agent.readDocumentCollection(
+      REACT_JS,
+      "learning"
+    )
 
     return response.send(collection)
   }
