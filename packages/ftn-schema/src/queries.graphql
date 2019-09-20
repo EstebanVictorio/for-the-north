@@ -1,0 +1,14 @@
+# import Post from "./types.graphql"
+
+type SelectedPost {
+  post: Post
+}
+
+type RecentPosts {
+  posts: [Post!]
+}
+
+type AllPosts {
+  learning: [Post!]
+  tooling: [Post!]
+}

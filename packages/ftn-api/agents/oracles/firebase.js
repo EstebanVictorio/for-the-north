@@ -1,6 +1,7 @@
 const FirebaseAdmin = require("firebase-admin")
 const AccountMetaKey = require("resources/for-the-north-firebase-adminsdk-qw8om-5747c96295.json")
 const FireStoreOff = require("exceptions/firestore-store-off")
+
 class Firebase {
   constructor() {
     this.admin = FirebaseAdmin
@@ -20,11 +21,13 @@ class Firebase {
     if (!this.db) {
       throw new FireStoreOff()
     }
-    const collection = []
+    const documents = {}
     const query = await this.db.collection(name)
     const snapshot = await query.get()
-    snapshot.docs.map(snapshotDoc => collection.push({ ...snapshotDoc.data() }))
-    return collection
+    snapshot.docs.map(snapshotDoc => {
+      documents[snapshotDoc.id] = snapshotDoc.data()
+    })
+    return documents
   }
 
   async readDocumentCollectionData(collection, document, name) {

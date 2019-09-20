@@ -1,0 +1,9 @@
+type Post {
+  id: Int!
+  name: String!
+  title: String!
+  status: String!
+  url: String!
+  iconUrl: String!
+  date: String!
+}

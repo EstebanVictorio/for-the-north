@@ -1,6 +1,0 @@
-type Post {
-  id: Int!
-  author: String!
-  text: String!
-  url: String!
-}

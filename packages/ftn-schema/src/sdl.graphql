@@ -1,10 +1,10 @@
-# import Post from './types/posts.graphql'
-# import RecentPosts, SelectedPost from './queries/posts.graphql'
-# import CreatePostResult, UpdatePostResult, DeletePostResult from './mutations/posts.graphql'
+# import RecentPosts, SelectedPost, AllPosts from "./queries.graphql"
+# import CreatePostResult, UpdatePostResult, DeletePostResult from "./mutations.graphql"
 
 type Query {
-  recent: RecentPosts
-  post(id: Int!): SelectedPost
+  recent(blog: String!): RecentPosts
+  selectedPost(id: Int!, blog: String!, section: String!): SelectedPost
+  allPosts(blog: String!): AllPosts
 }
 
 type Mutation {

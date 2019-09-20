@@ -13,8 +13,7 @@ const plugins = [
       root: [root],
       alias: aliases
     }
-  ],
-  [require.resolve("babel-plugin-import-graphql")]
+  ]
 ]
 
 module.exports = {

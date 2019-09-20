@@ -20,6 +20,7 @@
     "hof": "hof",
     "boot": "boot",
     "feed": "feed",
+    "utils": "utils",
     "agents": "agents",
     "routing": "routing",
     "resources": "resources",
