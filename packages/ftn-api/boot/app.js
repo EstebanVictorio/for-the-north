@@ -11,8 +11,6 @@ class App {
   }
 
   async start() {
-    // this.router.setupRoutes()
-    // this.server.use(this.router.getExpressRouter())
     const schemaMiddleware = await this.schemaAgent.useSchema()
     this.server.use("/api", schemaMiddleware)
     await this.server.listen(this.port)
