@@ -1,8 +1,16 @@
-import ApolloClient from "apollo-boost"
+import { ApolloClient, InMemoryCache, HttpLink } from "apollo-boost"
 
-const configureClient = uri => {
-  const apolloClient = new ApolloClient({
+const configureClient = (uri, ssrMode) => {
+  const link = new HttpLink({
     uri
+  })
+
+  const cache = new InMemoryCache()
+
+  const apolloClient = new ApolloClient({
+    link,
+    cache,
+    ssrMode
   })
 
   return apolloClient

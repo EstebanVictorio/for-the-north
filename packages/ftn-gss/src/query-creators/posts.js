@@ -1,18 +1,25 @@
 import { gql } from "apollo-boost"
 
-const recent = blog => gql`
-  query {
-    recent(blog: ${blog}) {
-      posts {
-        id
-        title
+const recent = blog => [
+  gql`
+    query recent($blog: String!) {
+      recent(blog: $blog) {
+        posts {
+          id
+          title
+        }
       }
     }
+  `,
+  {
+    variables: {
+      blog
+    }
   }
-`
+]
 
 const allPosts = blog => gql`
-  query {
+  {
     allPosts(blog: ${blog}) {
       learning {
         id
@@ -28,7 +35,7 @@ const allPosts = blog => gql`
 `
 
 const selectedPost = (id, blog, section) => gql`
-  query {
+  {
     selectedPost(id: ${id}, blog: ${blog}, section: ${section}) {
       post {
         id

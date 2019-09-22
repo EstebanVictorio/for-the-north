@@ -3,6 +3,7 @@ import styled from "styled-components"
 import ReactMD from "react-markdown"
 import PostNavigation from "components/navigation/post-navigation"
 import RecentPostsNavigation from "components/navigation/recent-posts-navigation"
+import { QueryCreators, useQuery } from "@ftn/gss"
 
 const StyledHeading = styled.h1`
   font-size: 150px;
@@ -16,14 +17,19 @@ const StyledSubtitle = styled.h2`
   text-align: center;
 `
 
-const Home = () => (
-  <Layout>
-    <BlogNavigation />
-    <StyledHeading>For The North</StyledHeading>
-    <StyledSubtitle>React Edition</StyledSubtitle>
-    <PostNavigation />  
-    <RecentPostsNavigation />
-  </Layout>
-)
+const Home = () => {
+  const { recent } = QueryCreators
+  const { loading, error, data } = useQuery(...recent("reactjs"))
+
+  return (
+    <Layout>
+      <BlogNavigation />
+      <StyledHeading>For The North</StyledHeading>
+      <StyledSubtitle>React Edition</StyledSubtitle>
+      <PostNavigation />
+      <RecentPostsNavigation />
+    </Layout>
+  )
+}
 
 export default Home
