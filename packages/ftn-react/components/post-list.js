@@ -46,7 +46,17 @@ const PostList = ({ learning, tooling }) => (
             <li>
               <PostCard
                 postTitle={learningPost.title}
-                icon={<ReactSvg src={learningPost.iconUrl} wrapper="span" />}
+                icon={
+                  <ReactSvg
+                    src={learningPost.iconUrl}
+                    loading={() => "Loading svg..."}
+                    wrapper="span"
+                    afterInjection={(err, svg) => {
+                      console.log(err)
+                      return err ? "Error with SVG loading" : svg
+                    }}
+                  />
+                }
               />
             </li>
           )

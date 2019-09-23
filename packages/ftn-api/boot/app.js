@@ -7,7 +7,7 @@ class App {
   constructor(port = 3000) {
     this.port = port
     this.server = Express()
-    this.server.use(cors())
+    this.server.use(cors({ origin: true }))
     // this.router = new Router(Express.Router())
     this.schemaAgent = new SchemaAgent(true)
   }

@@ -14,6 +14,9 @@ const StyledPostCard = styled.div`
 
   svg {
     width: 80px;
+    path {
+      fill: #61dafb;
+    }
   }
 `
 
