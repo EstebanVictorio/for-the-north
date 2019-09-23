@@ -16,8 +16,6 @@ const serverHandler = (req, res) => {
   const parsedUrl = parse(req.url, true)
   const newPath = req.path.replace("/ftn-react", "/")
   if (/_next/.test(parsedUrl.pathname)) {
-    console.log(`Url matches _next`)
-    console.log(`Url: ${req.url}`)
     handle(req, res, parsedUrl)
   } else {
     app.render(req, res, newPath, parsedUrl.query)

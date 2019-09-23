@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@ftn/gss": "1.0.0",
     "@ftn/patterns": "1.0.0",
     "@mdx-js/loader": "1.0.20",
     "@next/mdx": "8.1.0",

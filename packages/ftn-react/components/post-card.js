@@ -2,10 +2,10 @@ import styled from "styled-components"
 
 const StyledPostCard = styled.div`
   display: flex;
-  margin: 0 50px;
+  height: 100px;
+  margin: 14px 50px;
   cursor: pointer;
   border-radius: 2px;
-  padding: 10px 50px;
   align-items: center;
   box-sizing: border-box;
   justify-content: center;
@@ -14,7 +14,6 @@ const StyledPostCard = styled.div`
 
   svg {
     width: 80px;
-    margin-right: 40px;
   }
 `
 

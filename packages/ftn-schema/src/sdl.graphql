@@ -4,7 +4,7 @@
 type Query {
   recent(blog: String!): RecentPosts
   selectedPost(id: Int!, blog: String!, section: String!): SelectedPost
-  allPosts(blog: String!): AllPosts
+  allPosts(blog: String!, released: Boolean): AllPosts
 }
 
 type Mutation {

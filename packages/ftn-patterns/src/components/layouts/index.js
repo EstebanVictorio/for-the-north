@@ -78,7 +78,6 @@ const StyledMainContent = styled.section`
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 5px 180px 5px 50px;
     font-size: 20px;
     height: calc(100vh - 60px);
   }

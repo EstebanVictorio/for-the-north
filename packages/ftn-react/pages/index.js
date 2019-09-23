@@ -4,6 +4,7 @@ import ReactMD from "react-markdown"
 import PostNavigation from "components/navigation/post-navigation"
 import RecentPostsNavigation from "components/navigation/recent-posts-navigation"
 import { QueryCreators, useQuery } from "@ftn/gss"
+import { BLOG } from "utils/constants"
 
 const StyledHeading = styled.h1`
   font-size: 150px;
@@ -17,9 +18,8 @@ const StyledSubtitle = styled.h2`
   text-align: center;
 `
 
-const Home = () => {
-  const { recent } = QueryCreators
-  const { loading, error, data } = useQuery(...recent("reactjs"))
+const Home = ({ query, options }) => {
+  const { loading, error, data } = useQuery(query, options)
 
   return (
     <Layout>
@@ -30,6 +30,15 @@ const Home = () => {
       <RecentPostsNavigation />
     </Layout>
   )
+}
+
+Home.getInitialProps = async () => {
+  const { recent } = QueryCreators
+  const [query, options] = recent(BLOG)
+  return {
+    query,
+    options
+  }
 }
 
 export default Home

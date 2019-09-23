@@ -7,6 +7,7 @@ const recent = blog => [
         posts {
           id
           title
+          iconUrl
         }
       }
     }
@@ -14,36 +15,59 @@ const recent = blog => [
   {
     variables: {
       blog
-    }
+    },
+    skip: !blog
   }
 ]
 
-const allPosts = blog => gql`
-  {
-    allPosts(blog: ${blog}) {
-      learning {
-        id
-        title
-      }
+const allPosts = (blog, released) => [
+  gql`
+    query allPosts($blog: String!, $released: Boolean) {
+      allPosts(blog: $blog,released: $released) {
+        learning {
+          id
+          title
+          iconUrl
+        }
 
-      tooling {
-        id
-        title
+        tooling {
+          id
+          title
+          iconUrl
+        }
       }
     }
-  }
-`
-
-const selectedPost = (id, blog, section) => gql`
+  `,
   {
-    selectedPost(id: ${id}, blog: ${blog}, section: ${section}) {
-      post {
-        id
-        title
+    variables: {
+      blog,
+      released
+    },
+    skip: !blog,
+    fetchPolicy: "cache-and-network"
+  }
+]
+
+const selectedPost = (id, blog, section) => [
+  gql`
+    query selectedPost($id: Int!, $blog: String!, $section: String!) {
+      selectedPost(id: $id, blog: $blog, section: $section) {
+        post {
+          id
+          title
+        }
       }
     }
+  `,
+  {
+    variables: {
+      id,
+      blog,
+      section
+    },
+    skip: !id || !blog || !section
   }
-`
+]
 
 export { recent, allPosts, selectedPost }
 

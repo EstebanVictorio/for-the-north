@@ -67,7 +67,7 @@ const PostNavigation = () => (
       <hr className="navigation-separator" />
       <ReactSvg src="/static/icons/react.svg" className="icon" />
       <hr className="navigation-separator" />
-      <Link href="/">
+      <Link href="/posts">
         <a className="post-link">Posts</a>
       </Link>
     </ul>

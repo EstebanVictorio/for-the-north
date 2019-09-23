@@ -1,53 +1,76 @@
-import styled from 'styled-components'
-import { Link } from '@ftn/patterns'
+import styled from "styled-components"
+import { Link } from "@ftn/patterns"
+import PostCard from "components/post-card"
+import ReactSvg from "react-svg"
 
 const StyledColumns = styled.div`
   display: flex;
-  
-
-  @media screen and (min-width: 144px){
+  box-sizing: border-box;
+  @media screen and (min-width: 144px) {
     flex-direction: column;
   }
 
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 1024px) {
     flex-direction: row;
   }
 
+  .post-list-type-title {
+    text-align: center;
+  }
 
   .post-index-list {
-    margin: 10px;
     flex-grow: 1;
 
-    .post-entry {
-      margin: 15px 0;
+    .post-list {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      overflow-y: auto;
+      flex-direction: column;
+    }
+
+    .empty-list {
+      text-align: center;
     }
   }
 `
 
-const PostList = () => (
+const PostList = ({ learning, tooling }) => (
   <StyledColumns>
-      <div className="post-index-list">
-        <h2>Eager to learn?</h2>
-        <ol>
-        <li className="post-entry">
-            <Link prefetch href="/posts/welcome-to-react">
-              <a>Welcome to React!</a>
-            </Link>
-          </li>
-          <li className="post-entry">
-            <Link prefetch href="/posts/how-to-write-components">
-              <a>Components: How to write them</a>
-            </Link>
-          </li>
-        </ol>
-      </div>
-      <div className="post-index-list">
-        <h2>Want to empower your tooling?</h2>
-        <ol>
-        </ol>
-      </div>
-    </StyledColumns>
+    <div className="post-index-list">
+      <h2 className="post-list-type-title">Learn</h2>
+      <ul className="post-list">
+        {learning.map(learningPost => {
+          return (
+            <li>
+              <PostCard
+                postTitle={learningPost.title}
+                icon={<ReactSvg src={learningPost.iconUrl} wrapper="span" />}
+              />
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+    <div className="post-index-list">
+      <h2 className="post-list-type-title">Tooling</h2>
+      <ul className="post-list">
+        {tooling && tooling.length ? (
+          tooling.map(toolingPost => (
+            <li>
+              <PostCard
+                postTitle={toolingPost.title}
+                icon={<ReactSvg src={toolingPost.iconUrl} />}
+              />
+            </li>
+          ))
+        ) : (
+          <p className="empty-list">No Tooling posts yet.</p>
+        )}
+      </ul>
+    </div>
+  </StyledColumns>
 )
-
 
 export default PostList

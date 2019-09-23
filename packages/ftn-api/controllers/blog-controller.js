@@ -31,14 +31,18 @@ class BlogController {
     }
   }
 
-  async allPosts({ blog }) {
+  async allPosts({ blog, released }) {
     const data = await this.firebaseAgent.readCollection(blog)
     const { posts } = data
     const { learning, tooling } = posts
 
     return {
-      learning,
-      tooling
+      learning: released
+        ? learning.filter(post => post.status === "RELEASED")
+        : learning,
+      tooling: released
+        ? tooling.filter(post => post.status === "RELEASED")
+        : tooling
     }
   }
 }
