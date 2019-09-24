@@ -6,6 +6,7 @@ import ReactSvg from "react-svg"
 const StyledColumns = styled.div`
   display: flex;
   box-sizing: border-box;
+  justify-content: center;
   @media screen and (min-width: 144px) {
     flex-direction: column;
   }
@@ -19,8 +20,6 @@ const StyledColumns = styled.div`
   }
 
   .post-index-list {
-    flex-grow: 1;
-
     .post-list {
       display: flex;
       margin: 0;
@@ -33,6 +32,9 @@ const StyledColumns = styled.div`
 
     .empty-list {
       text-align: center;
+      width: 350px;
+      box-sizing: border-box;
+      margin: 14px 50px;
     }
 
     .post-link {
@@ -53,7 +55,10 @@ const PostList = ({ learning, tooling }) => (
         {learning.map(learningPost => {
           return (
             <li>
-              <Link href="/">
+              <Link
+                href={`/learning/[post]`}
+                as={`/learning/${learningPost.id}`}
+              >
                 <a className="post-link">
                   <PostCard
                     postTitle={learningPost.title}

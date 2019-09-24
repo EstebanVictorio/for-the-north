@@ -18,6 +18,17 @@ const serverHandler = (req, res) => {
   if (/_next/.test(parsedUrl.pathname)) {
     handle(req, res, parsedUrl)
   } else {
+    const learningPostRegex = /learning\/[1-9]+[0-9]*/
+    const toolingPostRegex = /tooling\/[1-9]+[0-9]*/
+    if (
+      learningPostRegex.test(parsedUrl.pathname) ||
+      toolingPostRegex.test(parsedUrl.pathname)
+    ) {
+      const matches = parsedUrl.pathname.match(learningPostRegex)
+      console.log("Matches:", matches)
+    } else {
+      console.log("Match not")
+    }
     app.render(req, res, newPath, parsedUrl.query)
   }
 }
