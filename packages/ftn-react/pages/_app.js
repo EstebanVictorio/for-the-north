@@ -6,33 +6,28 @@ import { configureClient, ApolloProvider } from "@ftn/gss"
 
 const apolloClient = configureClient("http://localhost:3009/api", true)
 
-class Blog extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {}
+const Blog = ({ Component, pageProps, basePath }) => (
+  <ApolloProvider client={apolloClient}>
+    <CodeHLBaseStyles />
+    <Theme selected="night-dark">
+      <NavigationProvider value={basePath}>
+        <Component {...pageProps} />
+      </NavigationProvider>
+    </Theme>
+  </ApolloProvider>
+)
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
+Blog.getInitialProps = async ({ Component, ctx }) => {
+  let pageProps = {}
 
-    let basePath = process.env.NODE_ENV === "production" ? BASE_PATH : ""
-    return {
-      basePath,
-      pageProps
-    }
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
   }
 
-  render() {
-    const { Component, pageProps, basePath } = this.props
-    return (
-      <ApolloProvider client={apolloClient}>
-        <CodeHLBaseStyles />
-        <Theme selected="night-dark">
-          <NavigationProvider value={basePath}>
-            <Component {...pageProps} />
-          </NavigationProvider>
-        </Theme>
-      </ApolloProvider>
-    )
+  let basePath = process.env.NODE_ENV === "production" ? BASE_PATH : ""
+  return {
+    basePath,
+    pageProps
   }
 }
 

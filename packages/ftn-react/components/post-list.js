@@ -25,6 +25,7 @@ const StyledColumns = styled.div`
       display: flex;
       margin: 0;
       padding: 0;
+      align-items: center;
       list-style-type: none;
       overflow-y: auto;
       flex-direction: column;
@@ -32,6 +33,14 @@ const StyledColumns = styled.div`
 
     .empty-list {
       text-align: center;
+    }
+
+    .post-link {
+      text-decoration: none;
+    }
+
+    .post-link:visited {
+      color: inherit;
     }
   }
 `
@@ -44,20 +53,24 @@ const PostList = ({ learning, tooling }) => (
         {learning.map(learningPost => {
           return (
             <li>
-              <PostCard
-                postTitle={learningPost.title}
-                icon={
-                  <ReactSvg
-                    src={learningPost.iconUrl}
-                    loading={() => "Loading svg..."}
-                    wrapper="span"
-                    afterInjection={(err, svg) => {
-                      console.log(err)
-                      return err ? "Error with SVG loading" : svg
-                    }}
+              <Link href="/">
+                <a className="post-link">
+                  <PostCard
+                    postTitle={learningPost.title}
+                    icon={
+                      <ReactSvg
+                        src={learningPost.iconUrl}
+                        loading={() => "Loading svg..."}
+                        wrapper="span"
+                        afterInjection={(err, svg) => {
+                          console.log(err)
+                          return err ? "Error with SVG loading" : svg
+                        }}
+                      />
+                    }
                   />
-                }
-              />
+                </a>
+              </Link>
             </li>
           )
         })}
