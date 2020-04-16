@@ -1,5 +1,5 @@
 import "isomorphic-fetch"
-import QueryCreators from "./query-creators"
+import QueryCreators from "query-creators"
 import configureClient from "./configure-client"
 import { ApolloProvider, useQuery } from "@apollo/react-hooks"
 
